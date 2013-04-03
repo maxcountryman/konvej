@@ -1,6 +1,6 @@
-(ns verbage.runner
+(ns konvej.runner
   (:require [ring.adapter.jetty :refer [run-jetty]]
-            [verbage.verbs :refer [app]]))
+            [konvej.verbs :refer [app]]))
 
 (defn -main [port]
   (run-jetty app {:port (Integer. port)}))

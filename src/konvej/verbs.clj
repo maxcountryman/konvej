@@ -1,4 +1,4 @@
-(ns verbage.verbs
+(ns konvej.verbs
   (:require [cheshire.core :refer [generate-string]]
             [clout.core :refer [route-matches]]
             [clojure.string :refer [join
@@ -7,7 +7,6 @@
             [ring.middleware.resource :refer [wrap-resource]]
             [ring.middleware.session :refer [wrap-session]]
             [ring.middleware.params :refer [wrap-params]]
-            [ring.middleware.multipart-params :refer [wrap-multipart-params]]
             [ring.util.response :refer [content-type
                                         redirect
                                         response]]))
@@ -111,7 +110,8 @@
 
 (defroute index "/" [:any]
   (fn [req]
-    (response "endpoints: /get, /post, /put/, delete, /ip, /headers /user-agent /redirect/:n")))
+    (response "endpoints: /get, /post, /put/, delete, /ip, /headers "
+              "/user-agent /redirect/:n")))
 
 
 (defroute ip "/ip" [:any]
@@ -186,5 +186,4 @@
     (partial wrap-routes 'verbage.verbs)
     (wrap-head)
     (wrap-params)
-    (wrap-multipart-params)
     (wrap-session)))
