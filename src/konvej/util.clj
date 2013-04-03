@@ -12,6 +12,34 @@
                                         response]]))
 
 
+(defn json-response
+  [body]
+  (->
+    (response (generate-string body {:pretty true}))
+    (content-type "application/json")))
+
+
+(defn html-response
+  [body]
+  (->
+    (response body)
+    (content-type "text/html")))
+
+
+(def render-not-found
+  (str 
+    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">
+    <title>404 Not Found</title>
+    <h1>Not Found</h1>
+    <p>The requested URL was not found on the server.</p>
+    <p>If you entered the URL manually please check your spelling and try "
+    "again.</p>"))
+
+
+(def not-found
+  (html-response render-not-found))
+
+
 (defn- render-method-not-allowed
   [meth]
   (str
@@ -56,34 +84,6 @@
                            :when (:route-handler (meta f))]
                        (f req))))
       not-found))
-
-
-(defn json-response
-  [body]
-  (->
-    (response (generate-string body {:pretty true}))
-    (content-type "application/json")))
-
-
-(defn html-response
-  [body]
-  (->
-    (response body)
-    (content-type "text/html")))
-
-
-(def render-not-found
-  (str 
-    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">
-    <title>404 Not Found</title>
-    <h1>Not Found</h1>
-    <p>The requested URL was not found on the server.</p>
-    <p>If you entered the URL manually please check your spelling and try "
-    "again.</p>"))
-
-
-(def not-found
-  (html-response render-not-found))
 
 
 (defn permanent-redirect
