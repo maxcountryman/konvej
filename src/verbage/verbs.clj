@@ -115,11 +115,11 @@
 
 
 (defroute ip "/ip" [:any]
-  (fn [req] (json-response {:origin (:origin get-resp-map req)})))
+  (fn [req] (json-response {:origin (:origin (get-resp-map req))})))
 
 
 (defroute headers "/headers" [:any]
-  (fn [req] (json-response {:headers (:headers get-resp-map req)})))
+  (fn [req] (json-response {:headers (:headers (get-resp-map req))})))
 
 
 (defroute user-agent "/user-agent" [:any]
