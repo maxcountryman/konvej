@@ -1,1 +1,1 @@
-web: lein with-profile production trampoline run -m verbage.runner $PORT
+web: lein with-profile production trampoline run -m konvej.runner $PORT

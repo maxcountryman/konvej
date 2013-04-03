@@ -110,8 +110,8 @@
 
 (defroute index "/" [:any]
   (fn [req]
-    (response "endpoints: /get, /post, /put/, delete, /ip, /headers "
-              "/user-agent /redirect/:n")))
+    (response (str "endpoints: /get, /post, /put/, delete, /ip, /headers "
+                   "/user-agent /redirect/:n"))))
 
 
 (defroute ip "/ip" [:any]
@@ -183,7 +183,7 @@
 
 (def app
   (->
-    (partial wrap-routes 'verbage.verbs)
+    (partial wrap-routes 'konvej.verbs)
     (wrap-head)
     (wrap-params)
     (wrap-session)))

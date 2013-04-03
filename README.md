@@ -1,13 +1,15 @@
-# verbage
+# Konvej
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure port of [httpbin](http://httpbin.org/) using ring.
 
 ## Usage
 
-FIXME
+```sh
+$ lein ring server
+```
 
 ## License
 
-Copyright © 2013 FIXME
+Copyright © 2013 Max Countryman
 
-Distributed under the Eclipse Public License, the same as Clojure.
+Distributed under the BSD License.
