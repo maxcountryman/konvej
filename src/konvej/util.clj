@@ -69,16 +69,15 @@
     (let [req-meth# (:request-method req#)
           bad-meth# (nil? (some #(= req-meth# %) ~meths))
           any-meth# (= ~meths [:any])]
-      (if (:uri req#)
-        (if (and (route-matches ~uri req#) (and bad-meth# (not any-meth#)))
-          (method-not-allowed req-meth# (get-allowed ~meths))
-          (if-let [params# (route-matches ~uri req#)]
-              (~handler (assoc req# :route-params params#))
-              req#))
-        req#))))
+      (if (and (route-matches ~uri req#) (and bad-meth# (not any-meth#)))
+        (method-not-allowed req-meth# (get-allowed ~meths))
+        (if-let [params# (route-matches ~uri req#)]
+          (~handler (assoc req# :route-params params#))
+          req#)))))
 
 
 (defn wrap-routes [from-ns req]
+  (prn req)
   (or (first (filter :status
                      (for [[_ f] (ns-publics from-ns)
                            :when (:route-handler (meta f))]
