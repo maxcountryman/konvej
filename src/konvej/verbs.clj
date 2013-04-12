@@ -1,15 +1,13 @@
 (ns konvej.verbs
   (:require [cheshire.core :refer [generate-string]]
+            [clasp.clasp :refer [defroute
+                                 wrap-routes]]
+            [clasp.util :refer [html-response]]
             [clout.core :refer [route-matches]]
             [clojure.string :refer [join
                                     upper-case]]
-            [konvej.util :refer [defroute
-                                 html-response
-                                 json-response
-                                 method-not-allowed
-                                 not-found
-                                 permanent-redirect
-                                 wrap-routes]]
+            [konvej.util :refer [json-response
+                                 permanent-redirect]]
             [ring.middleware.head :refer [wrap-head]]
             [ring.middleware.resource :refer [wrap-resource]]
             [ring.middleware.session :refer [wrap-session]]

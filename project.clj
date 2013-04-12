@@ -3,7 +3,8 @@
   :url "https://github.com/maxcountryman/konvej"
   :license {:name "BSD"
             :url "http://opensource.org/licenses/BSD-3-Clause"}
-  :dependencies [[clout "1.1.0"]
+  :dependencies [[clasp "0.0.1"]
+                 [clout "1.1.0"]
                  [cheshire "5.0.2"]
                  [org.clojure/clojure "1.4.0"]
                  [ring/ring-core "1.1.6"]
